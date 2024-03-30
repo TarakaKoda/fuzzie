@@ -1,3 +1,11 @@
+import Category from "@/components/icons/category";
+import Logs from "@/components/icons/clipboard";
+import Templates from "@/components/icons/cloud_download";
+import Home from "@/components/icons/home";
+import Payment from "@/components/icons/payment";
+import Settings from "@/components/icons/settings";
+import Workflows from "@/components/icons/workflows";
+
 export const clients = [...new Array(10)].map((client, index) => ({
   href: `/${index + 1}.png`,
 }));
@@ -80,5 +88,57 @@ export const products = [
     title: "E Free Invoice",
     link: "https://efreeinvoice.com",
     thumbnail: "/p3.png",
+  },
+];
+
+export const menuOptions = [
+  {
+    id: 1,
+    name: "Dashboard",
+    image: "/sidebarIcons/dashboard.png",
+    activeImage: "/sidebarIcons/dashboard_active.png",
+    href: "/dashboard",
+  },
+  {
+    id: 2,
+    name: "Workflows",
+    image: "/sidebarIcons/workflow.png",
+    activeImage: "/sidebarIcons/workflow_active.png",
+    href: "/workflows",
+  },
+  {
+    id: 3,
+    name: "Settings",
+    image: "/sidebarIcons/setting.png",
+    activeImage: "/sidebarIcons/setting_active.png",
+    href: "/settings",
+  },
+  {
+    id: 4,
+    name: "Connections",
+    image: "/sidebarIcons/connection.png",
+    activeImage: "/sidebarIcons/connection_active.png",
+    href: "/connections",
+  },
+  {
+    id: 5,
+    name: "Billing",
+    image: "/sidebarIcons/billing.png",
+    activeImage: "/sidebarIcons/billing_active.png",
+    href: "/billing",
+  },
+  {
+    id: 6,
+    name: "Templates",
+    image: "/sidebarIcons/template.png",
+    activeImage: "/sidebarIcons/template_active.png",
+    href: "/templates",
+  },
+  {
+    id: 7,
+    name: "Logs",
+    image: "/sidebarIcons/logs.png",
+    activeImage: "/sidebarIcons/logs_active.png",
+    href: "/logs",
   },
 ];
