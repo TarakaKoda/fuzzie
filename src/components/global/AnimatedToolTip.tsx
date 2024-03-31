@@ -1,16 +1,9 @@
 "use client";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
-import React, { useState } from "react";
-import {
-  motion,
-  useTransform,
-  AnimatePresence,
-  useMotionValue,
-  useSpring,
-} from "framer-motion";
+import { useState } from "react";
 
 import Link from "next/link";
-import { IconsProps } from "../icons/workflows";
 
 export const AnimatedTooltip = ({
   items,
@@ -44,9 +37,9 @@ export const AnimatedTooltip = ({
   };
 
   return (
-    <>
+    <ul className="flex flex-col gap-1">
       {items.map((item, idx) => (
-        <div
+        <li
           className="relative group"
           key={item.name}
           onMouseEnter={() => setHoveredIndex(item.id)}
@@ -70,7 +63,7 @@ export const AnimatedTooltip = ({
                 rotate: rotate,
                 whiteSpace: "nowrap",
               }}
-              className="absolute -top-16 -left-1/2 translate-x-1/2 flex text-xs  flex-col items-center justify-center rounded-md bg-black z-50 shadow-xl px-4 py-2">
+              className="absolute -top-12 -left-2/4 translate-x-1/2 flex text-xs  flex-col items-center justify-center rounded-md bg-black z-50 shadow-xl px-4 py-2">
               <div className="absolute inset-x-10 z-30 w-[20%] -bottom-px bg-gradient-to-r from-transparent via-emerald-500 to-transparent h-px " />
               <div className="absolute left-10 w-[40%] z-30 -bottom-px bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px " />
               <div className="font-bold text-white relative z-30 text-base">
@@ -80,7 +73,7 @@ export const AnimatedTooltip = ({
           )}
 
           <div
-            className={`flex overflow-hidden p-[3px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-4 focus:ring-offset-slate-50 !m-0 object-top rounded-full h-14 w-14 relative transition duration-500`}
+            className={`flex overflow-hidden p-[3px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-4 focus:ring-offset-slate-50 !m-0 object-top rounded-full h-12 w-12 relative transition duration-500`}
             onMouseMove={handleMouseMove}>
             {pathname === item.href && (
               <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
@@ -90,14 +83,14 @@ export const AnimatedTooltip = ({
               className="flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 py-4 px-2.5 text-sm font-medium text-white backdrop-blur-3xl">
               <Image
                 src={pathname === item.href ? item.activeImage : item.image}
-                width={25}
-                height={25}
+                width={20}
+                height={20}
                 alt={item.name}
               />
             </Link>
           </div>
-        </div>
+        </li>
       ))}
-    </>
+    </ul>
   );
 };

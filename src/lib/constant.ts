@@ -1,10 +1,3 @@
-import Category from "@/components/icons/category";
-import Logs from "@/components/icons/clipboard";
-import Templates from "@/components/icons/cloud_download";
-import Home from "@/components/icons/home";
-import Payment from "@/components/icons/payment";
-import Settings from "@/components/icons/settings";
-import Workflows from "@/components/icons/workflows";
 
 export const clients = [...new Array(10)].map((client, index) => ({
   href: `/${index + 1}.png`,
@@ -106,39 +99,40 @@ export const menuOptions = [
     activeImage: "/sidebarIcons/workflow_active.png",
     href: "/workflows",
   },
+
   {
     id: 3,
-    name: "Settings",
-    image: "/sidebarIcons/setting.png",
-    activeImage: "/sidebarIcons/setting_active.png",
-    href: "/settings",
-  },
-  {
-    id: 4,
     name: "Connections",
     image: "/sidebarIcons/connection.png",
     activeImage: "/sidebarIcons/connection_active.png",
     href: "/connections",
   },
   {
-    id: 5,
+    id: 4,
     name: "Billing",
     image: "/sidebarIcons/billing.png",
     activeImage: "/sidebarIcons/billing_active.png",
     href: "/billing",
   },
   {
-    id: 6,
+    id: 5,
     name: "Templates",
     image: "/sidebarIcons/template.png",
     activeImage: "/sidebarIcons/template_active.png",
     href: "/templates",
   },
   {
-    id: 7,
+    id: 6,
     name: "Logs",
     image: "/sidebarIcons/logs.png",
     activeImage: "/sidebarIcons/logs_active.png",
     href: "/logs",
+  },
+  {
+    id: 7,
+    name: "Settings",
+    image: "/sidebarIcons/setting.png",
+    activeImage: "/sidebarIcons/setting_active.png",
+    href: "/settings",
   },
 ];
