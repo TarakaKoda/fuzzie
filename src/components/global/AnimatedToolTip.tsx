@@ -73,14 +73,14 @@ export const AnimatedTooltip = ({
           )}
 
           <div
-            className={`flex overflow-hidden p-[3px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-4 focus:ring-offset-slate-50 !m-0 object-top rounded-full h-12 w-12 relative transition duration-500`}
+            className={`flex overflow-hidden p-[3px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-4 focus:ring-offset-slate-50 !m-0 object-top rounded-full h-12 w-12 relative transition duration-500 border-1 border dark:border-none`}
             onMouseMove={handleMouseMove}>
             {pathname === item.href && (
               <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
             )}
             <Link
               href={item.href}
-              className="flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 py-4 px-2.5 text-sm font-medium text-white backdrop-blur-3xl">
+              className="flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-white dark:bg-slate-950 py-4 px-2.5 text-sm font-medium text-white backdrop-blur-3xl">
               <Image
                 src={pathname === item.href ? item.activeImage : item.image}
                 width={20}
