@@ -1,20 +1,13 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import React from "react";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { menuOptions } from "@/lib/constant";
 import { Separator } from "@/components/ui/separator";
+import { menuOptions } from "@/lib/constant";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-import { AnimatedTooltip } from "../global/AnimatedToolTip";
 import { Database, GitBranch, LucideMousePointerClick } from "lucide-react";
+import { AnimatedTooltip } from "../global/AnimatedToolTip";
 import { ModeToggle } from "../global/ModeToggle";
 
 type Props = {};
