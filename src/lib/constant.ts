@@ -1,4 +1,3 @@
-
 export const clients = [...new Array(10)].map((client, index) => ({
   href: `/${index + 1}.png`,
 }));
@@ -134,5 +133,22 @@ export const menuOptions = [
     image: "/sidebarIcons/setting.png",
     activeImage: "/sidebarIcons/setting_active.png",
     href: "/settings",
+  },
+];
+
+export const infoBarOptions = [
+  {
+    id: 1,
+    name: "Contact Support",
+    image: "/infobarIcons/headphones.png",
+    activeImage: "/infobarIcons/headphones.png",
+    href: "/",
+  },
+  {
+    id: 2,
+    name: "Guide",
+    image: "/infobarIcons/book.png",
+    activeImage: "/infobarIcons/book.png",
+    href: "/",
   },
 ];
