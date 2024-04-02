@@ -9,7 +9,7 @@ const InfoBar = () => {
   return (
     <div className="flex flex-row justify-end gap-6 items-center px-4 py-4 w-full dark:bg-black">
       <GradientSpinningBorder>
-        <span className="flex relative items-center bg-black px-4 rounded-full">
+        <span className="flex relative items-center bg-white dark:bg-black px-4 rounded-full">
           <Search />
           <Input
             placeholder="Quick Search"
