@@ -13,7 +13,8 @@ datasource db {
 model User {
   id                    Int                    @id @default(autoincrement())
   clerkId               String                 @unique
-  name                  String?
+  firstName             String?
+  lastName              String?
   email                 String                 @unique
   profileImage          String?
   tier                  String?                @default("Free")
