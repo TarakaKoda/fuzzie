@@ -4,6 +4,7 @@ import { Input } from "../ui/input";
 import GradientSpinningBorder from "../global/GradientSpinningBorder";
 import { AnimatedTooltip } from "../global/AnimatedToolTip";
 import { infoBarOptions } from "@/lib/constant";
+import { UserButton } from "@clerk/nextjs";
 
 const InfoBar = () => {
   return (
@@ -17,7 +18,10 @@ const InfoBar = () => {
           />
         </span>
       </GradientSpinningBorder>
-      <AnimatedTooltip items={infoBarOptions}/>
+      <AnimatedTooltip items={infoBarOptions} />
+      <GradientSpinningBorder>
+        <UserButton/>
+      </GradientSpinningBorder>
     </div>
   );
 };
