@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { EditUserProfileSchema } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import GradientSpinningBorder from "../global/GradientSpinningBorder";
@@ -16,26 +17,46 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/inputAceternity";
-import { Loader2 } from "lucide-react";
 
-const ProfileForm = () => {
+type Props = {
+  user: any;
+  onUpdate?: any;
+};
+
+const ProfileForm = ({ user, onUpdate }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof EditUserProfileSchema>>({
     mode: "onChange",
     resolver: zodResolver(EditUserProfileSchema),
     defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
+      firstName: user.firstName,
+      lastName: user.lastName || "",
+      email: user.email,
     },
   });
 
-  const handleUpdateProfile = (
+  const handleUpdateProfile = async (
     values: z.infer<typeof EditUserProfileSchema>
   ) => {
-    console.log("Form submitted", values);
+    try {
+      setIsLoading(true);
+      await onUpdate(values.firstName, values.lastName);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
+
+  useEffect(() => {
+    form.reset({
+      firstName: user.firstName,
+      lastName: user.lastName || "",
+      email: user.email,
+    });
+  }, [user]);
+
   return (
     <div className="max-w-md w-full flex flex-col justify-between md:items-center relative mx-auto rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
@@ -72,7 +93,9 @@ const ProfileForm = () => {
               render={({ field }) => (
                 <FormItem>
                   <LabelInputContainer>
-                    <FormLabel className="text-lg">Last name</FormLabel>
+                    <FormLabel className="text-lg">
+                      Last name <span className="text-sm">(optional)</span>
+                    </FormLabel>
                     <FormControl>
                       <Input placeholder="User last name" {...field} />
                     </FormControl>
@@ -83,7 +106,6 @@ const ProfileForm = () => {
             />
           </div>
           <FormField
-            disabled={isLoading}
             control={form.control}
             name="email"
             render={({ field }) => (
@@ -97,6 +119,7 @@ const ProfileForm = () => {
                       placeholder="useremail@example.com"
                       {...field}
                       type="email"
+                      disabled={true}
                     />
                   </FormControl>
                 </LabelInputContainer>
