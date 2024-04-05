@@ -1,4 +1,4 @@
-import React from "react";
+import Workflows from "./_components";
 import WorkflowButton from "./_components/WorkflowButton";
 
 type Props = {};
@@ -10,6 +10,7 @@ const WorkflowsPage = (props: Props) => {
         Workflows
         <WorkflowButton />
       </h1>
+      <Workflows />
     </div>
   );
 };
