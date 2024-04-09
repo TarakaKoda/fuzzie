@@ -31,6 +31,7 @@ import { useEditor } from '@/provider/editor-provider'
 import { toast } from '@/components/ui/use-toast'
 import FlowInstance from './FlowInstance'
 import EditorCanvasSidebar from './EditorConvasSidebar'
+import { onGetNodesEdges } from '../../../_actions/workflow-connections'
 
 type Props = {}
 
@@ -126,7 +127,7 @@ const EditorCanvas = (props: Props) => {
 
   const handleClickCanvas = () => {
     dispatch({
-      type: 'SELECT_ELEMENT',
+      type: 'SELECTED_ELEMENT',
       payload: {
         element: {
           data: {
@@ -167,20 +168,23 @@ const EditorCanvas = (props: Props) => {
     []
   )
 
-//   const onGetWorkFlow = async () => {
-//     setIsWorkFlowLoading(true)
-//     const response = await onGetNodesEdges(pathname.split('/').pop()!)
-//     if (response) {
-//       setEdges(JSON.parse(response.edges!))
-//       setNodes(JSON.parse(response.nodes!))
-//       setIsWorkFlowLoading(false)
-//     }
-//     setIsWorkFlowLoading(false)
-//   }
+  const onGetWorkFlow = async () => {
+    console.log('here 1')
+    setIsWorkFlowLoading(true)
+    const response = await onGetNodesEdges(pathname.split('/').pop()!)
+    if (response) {
+      console.log('here 2')
+      setEdges(JSON.parse(response.edges!))
+      setNodes(JSON.parse(response.nodes!))
+      setIsWorkFlowLoading(false)
+    }
+    setIsWorkFlowLoading(false)
+  }
 
-//   useEffect(() => {
-//     onGetWorkFlow()
-//   }, [])
+  useEffect(() => {
+    console.log('here effect')
+    onGetWorkFlow()
+  }, [])
 
   return (
     <ResizablePanelGroup direction="horizontal">
