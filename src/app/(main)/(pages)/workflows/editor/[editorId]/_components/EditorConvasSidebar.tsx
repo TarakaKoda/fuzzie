@@ -11,7 +11,11 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { CONNECTIONS, EditorCanvasDefaultCardTypes } from "@/lib/constant";
-import { onConnections, onDragStart } from "@/lib/editor-utils";
+import {
+  fetchBotSlackChannels,
+  onConnections,
+  onDragStart,
+} from "@/lib/editor-utils";
 
 import {
   Accordion,
@@ -42,6 +46,15 @@ const EditorCanvasSidebar = ({ nodes }: Props) => {
       onConnections(nodeConnection, state, googleFile);
     }
   }, [state]);
+
+  useEffect(() => {
+    if (nodeConnection.slackNode.slackAccessToken) {
+      fetchBotSlackChannels(
+        nodeConnection.slackNode.slackAccessToken,
+        setSlackChannels
+      );
+    }
+  }, [nodeConnection]);
 
   return (
     <aside>
