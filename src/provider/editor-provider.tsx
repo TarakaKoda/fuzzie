@@ -106,7 +106,7 @@ const editorReducer = (
           edges: action.payload.edges,
         },
       };
-    case "SELECT_ELEMENT":
+    case "SELECTED_ELEMENT":
       return {
         ...state,
         editor: {

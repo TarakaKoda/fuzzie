@@ -43,28 +43,30 @@ const ConnectionCard = ({
         <CardItem
           translateZ="60"
           className="flex flex-col items-center gap-2 p-4">
-          {/* {connected[type] ? (
-            <div className="border-primary rounded-lg border-2 px-2 py-3 font-bold text-white">
-              Connected
-            </div>
-          ) : ( */}
-          <GradientSpinningBorder>
-            <Link
-              href={
-                title === "Discord"
-                  ? process.env.NEXT_PUBLIC_DISCORD_REDIRECT!
-                  : title === "Notion"
-                  ? process.env.NEXT_PUBLIC_NOTION_AUTH_URL!
-                  : title === "Slack"
-                  ? process.env.NEXT_PUBLIC_SLACK_REDIRECT!
-                  : "#"
-              }>
-              <p className="rounded-full h-10 flex items-center justify-center relative bg-white dark:bg-black p-3 dark:text-white text-black font-normal">
-                Connect
-              </p>
-            </Link>
-          </GradientSpinningBorder>
-          {/* )} */}
+          {connected[type] ? (
+            <GradientSpinningBorder>
+              <div className="bg-white dark:bg-black relative p-2 text-black rounded-full dark:text-white">
+                Connected
+              </div>
+            </GradientSpinningBorder>
+          ) : (
+            <GradientSpinningBorder>
+              <Link
+                href={
+                  title === "Discord"
+                    ? process.env.NEXT_PUBLIC_DISCORD_REDIRECT!
+                    : title === "Notion"
+                    ? process.env.NEXT_PUBLIC_NOTION_AUTH_URL!
+                    : title === "Slack"
+                    ? process.env.NEXT_PUBLIC_SLACK_REDIRECT!
+                    : "#"
+                }>
+                <p className="rounded-full h-10 flex items-center justify-center relative bg-white dark:bg-black p-3 dark:text-white text-black font-normal">
+                  Connect
+                </p>
+              </Link>
+            </GradientSpinningBorder>
+          )}
         </CardItem>
       </CardBody>
     </CardContainer>

@@ -1,10 +1,9 @@
-import { Search } from "lucide-react";
-import React from "react";
-import { Input } from "../ui/input";
-import GradientSpinningBorder from "../global/GradientSpinningBorder";
-import { AnimatedTooltip } from "../global/AnimatedToolTip";
 import { infoBarOptions } from "@/lib/constant";
 import { UserButton } from "@clerk/nextjs";
+import { Search } from "lucide-react";
+import { AnimatedTooltip } from "../global/AnimatedToolTip";
+import GradientSpinningBorder from "../global/GradientSpinningBorder";
+import { Input } from "../ui/input";
 
 const InfoBar = () => {
   return (
@@ -19,9 +18,7 @@ const InfoBar = () => {
         </span>
       </GradientSpinningBorder>
       <AnimatedTooltip items={infoBarOptions} />
-      <GradientSpinningBorder>
-        <UserButton/>
-      </GradientSpinningBorder>
+      <UserButton/>
     </div>
   );
 };
