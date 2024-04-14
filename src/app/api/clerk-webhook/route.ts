@@ -7,7 +7,6 @@ export async function POST(request: NextRequest) {
     const { id, email_addresses, first_name, last_name, image_url } =
       body?.data;
     const email = email_addresses[0]?.email_address;
-    console.log(body);
 
     await prisma.user.upsert({
       where: { clerkId: id },
