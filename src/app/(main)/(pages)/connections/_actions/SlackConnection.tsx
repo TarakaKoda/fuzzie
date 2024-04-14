@@ -64,8 +64,6 @@ export async function listBotChannels(
       headers: { Authorization: `Bearer ${slackAccessToken}` },
     });
 
-    console.log(data);
-
     if (!data.ok) throw new Error(data.error);
 
     if (!data?.channels?.length) return [];
