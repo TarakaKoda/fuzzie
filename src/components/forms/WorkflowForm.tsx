@@ -15,6 +15,9 @@ import { Loader2 } from "lucide-react";
 import GradientSpinningBorder from "../global/GradientSpinningBorder";
 import { Input } from "../ui/inputAceternity";
 import { cn } from "@/lib/utils";
+import { useToast } from "../ui/use-toast";
+import { onCreateWorkflow } from "@/app/(main)/(pages)/workflows/_actions/workflow-connections";
+import { useModal } from "@/provider/modal-provider";
 
 type Props = {
   title?: string;
@@ -22,6 +25,9 @@ type Props = {
 };
 
 const WorkflowForm = ({ title, subTitle }: Props) => {
+  const { toast } = useToast();
+  const {setClose} = useModal();
+
   const form = useForm<z.infer<typeof WorkflowFormSchema>>({
     mode: "onChange",
     resolver: zodResolver(WorkflowFormSchema),
@@ -31,11 +37,21 @@ const WorkflowForm = ({ title, subTitle }: Props) => {
     },
   });
 
-  const isLoading = form.formState.isLoading;
+  const isLoading = form.formState.isSubmitting;
 
   const router = useRouter();
 
-  const handleSubmit = () => {};
+  const handleSubmit = async (values: z.infer<typeof WorkflowFormSchema>) => {
+    const workflow = await onCreateWorkflow(values.name, values.description);
+    if (workflow) {
+      toast({
+        title: workflow.message,
+        variant: "success",
+      });
+      router.refresh()
+    }
+    setClose()
+  };
 
   return (
     <div className="max-w-md w-full  relative mx-auto rounded-2xl p-4 shadow-input bg-white dark:bg-black">
@@ -80,6 +96,7 @@ const WorkflowForm = ({ title, subTitle }: Props) => {
           <div className="mt-8 ">
             <GradientSpinningBorder>
               <button
+              disabled={isLoading}
                 className="rounded-full relative group/btn bg-white dark:bg-black block w-full dark:text-white h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
                 type="submit">
                 {isLoading ? (
