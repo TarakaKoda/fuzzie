@@ -10,7 +10,16 @@ const WorkflowsPage = (props: Props) => {
         Workflows
         <WorkflowButton />
       </h1>
-      <Workflows />
+      <div className="relative flex flex-col gap-4">
+        <section className="grid text-muted-foreground">
+          <p className="lg:col-span-2 px-6 pt-6">
+            Create custom automation workflows with ease. Connect apps, set
+            triggers, and define actions to streamline your tasks and boost
+            efficiency.
+          </p>
+          <Workflows />
+        </section>
+      </div>
     </div>
   );
 };
