@@ -24,28 +24,37 @@ const InfoBar = () => {
   }, []);
 
   return (
-    <div className="flex flex-row justify-end gap-6 items-center px-4 py-4 w-full dark:bg-black">
-        <span className="flex items-center gap-2 font-bold">
-          <p className="text-sm font-light text-gray-300">Credits</p>
-          {tier == "Unlimited" ? (
-            <span>Unlimited</span>
-          ) : (
-            <span>
-              {credits}/{tier == "Free" ? "10" : tier == "Pro" && "100"}
-            </span>
-          )}
-        </span>
-      <GradientSpinningBorder>
-        <span className="flex relative items-center bg-white dark:bg-black px-4 rounded-full">
-          <Search />
-          <Input
-            placeholder="Quick Search"
-            className="border-none bg-transparent"
-          />
-        </span>
-      </GradientSpinningBorder>
-      <AnimatedTooltip items={infoBarOptions} />
-      <UserButton />
+    <div className="flex flex-row justify-between gap-6 items-center px-4 py-4 w-full dark:bg-black">
+      <div className="md:max-w-[900px] w-full">
+        <GradientSpinningBorder>
+          <span className="flex relative w-full items-center bg-white dark:bg-black px-4 rounded-full">
+            <Search />
+            <Input
+              placeholder="Quick Search"
+              className="border-none bg-transparent"
+            />
+          </span>
+        </GradientSpinningBorder>
+      </div>
+      <div className="flex items-center justify-evenly gap-6">
+        <GradientSpinningBorder>
+          <span className="flex items-center gap-2 relative bg-white dark:bg-black rounded-full p-2 font-bold">
+            <p className="text-sm font-light dark:text-gray-300">Credits</p>
+            {tier == "Unlimited" ? (
+              <span>Unlimited</span>
+            ) : (
+              <span>
+                {credits}/{tier == "Free" ? "10" : tier == "Pro" && "100"}
+              </span>
+            )}
+          </span>
+        </GradientSpinningBorder>
+        <AnimatedTooltip items={infoBarOptions} />
+        <div className="relative w-10 h-10 p-1 flex items-center jus bg-black rounded-full">
+
+          <UserButton />
+        </div>
+      </div>
     </div>
   );
 };
